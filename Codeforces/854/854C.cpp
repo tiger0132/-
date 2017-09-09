@@ -3,12 +3,13 @@
 // Good(Bad) Template
 // By tiger0133
 
+#include <ext/pb_ds/priority_queue.hpp>
 #include <bits/stdc++.h>
 using namespace std;
 
-// â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”    Constant    â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€” //
+// ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª    Constant    ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª //
 
-#define N 100005
+#define N 300005
 #define MOD 1000000007
 
 #define CINF 0x3f
@@ -24,7 +25,7 @@ using namespace std;
 #define LLMAX 0x7fffffffffffffff
 #define ULLMAX 0xffffffffffffffff
 
-// â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”    Function-Like Macro & Alias   â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€” //
+// ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª    Function-Like Macro & Alias   ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª //
 
 #define pue(c) while (!c.empty()) //pop until empty
 
@@ -36,11 +37,11 @@ using namespace std;
 #define tab putchar('\t');
 #define spc putchar(' ');
 
-// â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”    Optimizes    â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€” //
+// ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª    Optimizes    ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª //
 
 #define getchar getchar_x
 
-// â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”    Shorten Name    â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€” //
+// ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª    Shorten Name    ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª //
 
 typedef float fl;
 typedef double db;
@@ -94,7 +95,13 @@ typedef vii wgr[N];
 #define ctzl __builtin_ctzll
 #define prtl __builtin_parityll
 
-// â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”    Exit    â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€” //
+template <typename T = int>
+using ar = T[N];
+
+template <typename T = int>
+using __pq = __gnu_pbds::priority_queue<T>;
+
+// ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª    Exit    ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª //
 
 #ifdef __TIGER0133__
 
@@ -115,7 +122,7 @@ void sigsegv(int code) {
 
 #endif
 
-// â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”    Function    â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€” //
+// ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª    Function    ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª //
 
 inline void mat(int n, int m, int **arr) {
     for (int i = 0; i < n; i++) {
@@ -134,11 +141,12 @@ inline void mat(vvi& arr) {
 }
 
 char B[1 << 15], *S = B, *T = B;
-inline char getcharx() { //å¦‚æžœæ•°æ®ä¸­æœ‰éžæ•°å­—çš„è¾“å…¥, è¯·å‹¿ä½¿ç”¨!
+inline char getcharx() { //Èç¹ûÊý¾ÝÖÐÓÐ·ÇÊý×ÖµÄÊäÈë, ÇëÎðÊ¹ÓÃ!
     return S == T && (T = (S = B) + fread(B, 1, 1 << 15, stdin), S == T) ? 0 : *S++;
 }
 
-inline void get(register int& val) {
+template <typename T>
+inline void get(register T& val) {
     register int fac = 1;
     register char ch;
     val = 0;
@@ -147,7 +155,8 @@ inline void get(register int& val) {
     val *= fac;
 }
 
-inline bool put(register int val) {
+template <typename T>
+inline bool put(register T val) {
     val < 0 && (val = -val);
     val > 9 && put(val / 10);
     putchar(val % 10 + 48);
@@ -161,12 +170,55 @@ inline void normalize(T& x, const T& y, const Compare& comp = less<T>()) {
     }
 }
 
-// â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”    Solution    â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€” //
+// ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª    Solution    ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª //
+
+bool flg[600005];
+int rnk[600005];
+int par[600005];
+long long ans;
+pri<pii> pq;
+int n, k, x;
+ar<> vec;
+
+int find(int x) {
+    return (flg[x] || x <= k) ? par[x] = find(par[x] ? par[x] : x + 1) : x;
+}
+
+void merge(int x, int y) {
+    if ((x = find(x)) != (y = find(y))) {
+        if (rnk[x] > rnk[y]) {
+            par[y] = x;
+        } else {
+            par[x] = y;
+            rnk[x] += (rnk[x] == rnk[y]);
+        }
+    }
+}
 
 int main() {
     #ifdef __TIGER0133__
     signal(SIGSEGV, sigsegv);
     atexit(pause);
     #endif
-    
+    // freopen("f:\\a.txt", "r", stdin);
+    // freopen("f:\\b.txt", "w", stdout);
+    get(n); get(k);
+    for (int i = 1; i <= n; i++) {
+        get(x);
+        pq.psh(x, i);
+    }
+    pue(pq) {
+        pii val = pq.top(); pq.pop();
+        long long pos = val.second;
+        if (pos <= k || flg[pos]) {
+            pos = find(pos);
+        }
+        flg[pos] = true;
+        ans += (pos - val.second) * val.first;
+        vec[val.second] = pos;
+    }
+    put(ans); nln;
+    for (int i = 1; i <= n; i++) {
+        put(vec[i]); spc;
+    }
 } 
