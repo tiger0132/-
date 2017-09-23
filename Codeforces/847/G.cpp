@@ -173,10 +173,9 @@ inline void normalize(T& x, const T& y, const Compare& comp = less<T>()) {
 
 // ！！！！！！！！！！！！！！！！！！！！！    Solution    ！！！！！！！！！！！！！！！！！！！！！ //
 
-vct<set<ll>> rec;
-int n, x, k;
-mst<ll> h;
-stg s; 
+int cnt[8];
+string s;
+int n;
 
 int main() {
     #ifdef __TIGER0133__
@@ -186,20 +185,9 @@ int main() {
     cin >> n;
     while (n--) {
         cin >> s;
-        set<ll> t;
-        for (int i = 0; i < s.size(); i++) {
-            ll res = 0;
-            for (int j = i; j < s.size(); j++) {
-                res = res * 2017 + s[j];
-                h.psh(res);
-                t.psh(res);
-            }
-        }
-        rec.pb(move(t));
-    }
-    for (const auto& i : rec) {
-        for (const ll& j : i) {
-            if ()
+        for (int i = 0; i < 8; i++) {
+            cnt[i] += s[i] - 48;
         }
     }
+    cout << *max_element(cnt, cnt + 8);
 }

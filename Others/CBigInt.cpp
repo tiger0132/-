@@ -1,12 +1,14 @@
 #include <bits/stdc++.h>
+#define LEN 
 using namespace std;
 
 class CBigInt {
-private:
     bool sign;
-    unsigned 
+    unsigned data[LEN];
 public:
-
+    CBigInt() {
+        
+    }
 };
 
 int main() {

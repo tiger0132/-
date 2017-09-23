@@ -173,33 +173,37 @@ inline void normalize(T& x, const T& y, const Compare& comp = less<T>()) {
 
 // ！！！！！！！！！！！！！！！！！！！！！    Solution    ！！！！！！！！！！！！！！！！！！！！！ //
 
-vct<set<ll>> rec;
-int n, x, k;
-mst<ll> h;
-stg s; 
+bool vis[128];
+int x, y, n;
+vii rec;
+vi v;
+
+// 2
+// 1 1
+// 2 2
+
+void dfs(int i) {
+    if (!vis[i]) return;
+    vis[i] = true;
+    dfs(rec[i].nd);
+}
 
 int main() {
     #ifdef __TIGER0133__
     signal(SIGSEGV, sigsegv);
     atexit(pause);
     #endif
-    cin >> n;
-    while (n--) {
-        cin >> s;
-        set<ll> t;
-        for (int i = 0; i < s.size(); i++) {
-            ll res = 0;
-            for (int j = i; j < s.size(); j++) {
-                res = res * 2017 + s[j];
-                h.psh(res);
-                t.psh(res);
-            }
-        }
-        rec.pb(move(t));
+    get(n);
+    rec.pb(-1, -1);
+    for (int i = 1; i <= n; i++) {
+        get(x); get(y);
+        rec.pb(x, y);
+        if (!x) st1.pb(i);
     }
-    for (const auto& i : rec) {
-        for (const ll& j : i) {
-            if ()
-        }
+    for (int i = 1; i <= n; i++) {
+        if (vis[i]) dfs(i);
+    }
+    for (int i = 1; i < rec.size(); i++) {
+        put(rec[i].st); spc; put(rec[i].nd); nln;
     }
 }
