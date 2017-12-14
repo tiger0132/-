@@ -5,7 +5,7 @@ template <bool Exp, typename Type = void> struct _enable_if {};
 
 template <typename Type> struct _enable_if<true, Type> {
 public:
-    using type = Type;
+    typedef Type type;
 };
 
 _enable_if<1>::type f() {

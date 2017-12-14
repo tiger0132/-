@@ -1,30 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, k, two[256], five[256], ans, ans2;
-long long x;
-
-int get(long long val, int f) {
-	int ret = 0;
-	while (val % f == 0) {
-		ret++;
-		val /= f;
-	}
-	return ret;
-}
+int n, v, c[16384], w[16384], dp[16384];
 
 int main() {
-	cin >> n >> k;
-	for (int i = 0; i < n; i++) {
-		cin >> x;
-		two[i] = get(x, 2);
-		five[i] = get(x, 5);
-	}
-	sort(two, two + n, greater<int>());
-	sort(five, five + n, greater<int>());
-	for (int i = 0; i < k; i++) {
-		ans += two[i];
-		ans2 += five[i];
-	}
-	cout << min(ans, ans2);
+    scanf("%d%d", &v, &n);
+    for (int i = 1; i <= n; i++) {
+        scanf("%d%d", c + i, w + i);
+    }
+    for (int i = 1; i <= n; i++) {
+        for (int j = v; j >= c[i]; j--) {
+            dp[j] = max(dp[j], dp[j - c[i]] + w[i]);
+        }
+    }
+    printf("%d", dp[v]);
 }
