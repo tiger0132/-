@@ -1,0 +1,1 @@
+\sum_{v'}f(u,v')-\sum_{v''}f(v'',u)=\left\{\begin{array}{lc}|f|&u=V_s\\0&u\ne V_s,V_t\\-|f|&u=V_t\end{array}\right.

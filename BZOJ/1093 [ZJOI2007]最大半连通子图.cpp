@@ -1,3 +1,13 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> e[1000001];
+int n, m, x, a, b, ind;
+int low[1000001];
+int dfn[1000001];
+int ins[1000001];
+int st[1000001];
+
 void dfs(int u) {
 	dfn[u] = low[u] = ++ind; // index
 	ins[u] = 1; // instack(没形成强连通分量的栈)
@@ -21,9 +31,19 @@ void dfs(int u) {
 	}
 }
 
-int main() {
+# gaolin
 
-	for (int i = 0; i < n; i++) {
-		if (!dfn[i]) dfs(i);
+int main() {
+	scanf("%d%d%d", &n, &m, &x);
+	for (int i = 1; i <= m; i++) {
+		scanf("%d%d", &a, &b);
+		e[a].push_back(b);
+		e[b].push_back(a);
 	}
-}sort
+	for (int i = 1; i <= n; i++) {
+		if (!dfn[i]) {
+			dfs(i);
+		}
+	}
+	
+}

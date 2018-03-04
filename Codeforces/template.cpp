@@ -163,7 +163,7 @@ inline void normalize(T& x, const T& y, const Compare& comp = less<T>()) {
 
 // —————————————————————    Solution    ————————————————————— //
 
-int main() {
+int main(int argc, char *argv[]) {
     #ifdef __TIGER0133__
     signal(SIGSEGV, sigsegv);
     atexit(pause);

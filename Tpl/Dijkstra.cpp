@@ -11,7 +11,6 @@ void dijkstra(int s) {
 	memset(dis, 63, sizeof dis);
 	memset(vis, 0, sizeof vis);
 	dis[s] = 0;
-
 	for (int it = 1; it <= n; i++) {
 		int mind = inf, p = -1;
 		for (int i = 1; i <= n; i++) {
