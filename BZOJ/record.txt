@@ -1,0 +1,13 @@
+铁粉 ip
+铁锭 ii
+煤炭 co
+铝粉 al
+铜粉 cp
+锡粉 ti
+
+1: [1](1ip 1ii 8co (1ip 1ii 8co))
+2: [1] 32co (1al 1cp (1al)) (1al (1cp 1ti (1cp)) (1al))
+3: 
+4: 
+5: 
+6: 
