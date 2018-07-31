@@ -36,32 +36,47 @@ int main() {
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> gph[1024];
-int dp[1024][1024];
-int sc[1024];
-int n, m, k;
+int tree[2000006];
+int n;
 
-void dfs(int x) {
-    for (int i = 1; i <= m; i++) dp[x][i] = sc[x];
-    for (int i = 0; i < gph[x].size(); i++) {
-        int nx = gph[x][i];
-        dfs(nx);
-        for (int j = m; j; j--) {
-            for (int k = 0; k < j; k++) {
-                dp[x][j] = max(dp[x][j], dp[x][j-k] + dp[nx][k]);
-            }
-        }
-    }
+inline int lowbit(int x) {
+	return x&-x;
 }
+
+inline void add(int x, int y) {
+	while (x <= n) {
+		tree[x] += y;
+		x += lowbit(x);
+	}
+}
+
+inline int query(int x) {
+	int ans = 0;
+	while (x) {
+		ans += tree[x];
+		x -= lowbit(x);
+	}
+	return ans;
+}
+
+inline int query(int l, int r) {
+	return query(r) - query(l-1);
+}
+
+long long ans1, ans2;
+int x;
+
 int main() {
-    scanf("%d%d", &n, &m);
-    for (int i = 1; i <= n;i++) {
-        scanf("%d%d", &k, sc + i);
-        gph[k].push_back(i);
-    }
-    m++;
-    dfs(0);
-    printf("%d", dp[0][m]);
-    return 0;
+	freopen("in.in", "r", stdin);
+	scanf("%d", &n);
+	for (int i = 1; i <= n; i++) {
+		scanf("%d", &x);
+		add(x, 1);
+		ans1 += (long long)query(x+1, n) * (n - x - query(x+1, n));
+		ans2 += (long long)query(1, x-1) * (x - 1 - query(1, x-1));
+	}
+	printf("%lld %lld", ans1, ans2);
+	while (1);
+	return 0;
 }
 #endif
